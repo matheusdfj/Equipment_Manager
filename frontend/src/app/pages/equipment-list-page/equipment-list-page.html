@@ -1,3 +1,5 @@
+@if(this.modal.component()){<app-component-modal></app-component-modal>}
+
 <div class="max-w-5xl mx-auto px-6 py-7 pb-16">
   <div class="flex items-start justify-between mb-6 gap-4 flex-wrap">
     <div>
@@ -6,7 +8,7 @@
         Exibindo <span class="font-semibold text-blue-700">8</span> de <span class="font-semibold text-blue-700">48</span> equipamentos cadastrados
       </p>
     </div>
-    <button class="inline-flex items-center gap-1.5 bg-blue-900 text-white border-0 rounded-lg px-4 py-2.5 text-sm font-semibold cursor-pointer hover:bg-blue-700 transition whitespace-nowrap">
+    <button (click)="newEquipment()" class="inline-flex items-center gap-1.5 bg-blue-900 text-white border-0 rounded-lg px-4 py-2.5 text-sm font-semibold cursor-pointer hover:bg-blue-700 transition whitespace-nowrap">
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
@@ -31,7 +33,7 @@
       />
     </div>
 
-    <button class="inline-flex items-center gap-1.5 h-9 px-3.5 border border-gray-300 rounded-lg bg-white text-gray-600 text-sm font-medium cursor-pointer hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 transition whitespace-nowrap">
+    <button (click)="openFilter()" class="inline-flex items-center gap-1.5 h-9 px-3.5 border border-gray-300 rounded-lg bg-white text-gray-600 text-sm font-medium cursor-pointer hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 transition whitespace-nowrap">
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
