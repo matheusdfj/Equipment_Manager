@@ -1,0 +1,48 @@
+<div class="max-w-5xl mx-auto px-6 py-7 pb-16">
+  <div class="flex items-start justify-between mb-6 gap-4 flex-wrap">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900 tracking-tight m-0 mb-1">Equipamentos</h1>
+      <p class="text-sm text-gray-500 m-0">
+        Exibindo <span class="font-semibold text-blue-700">8</span> de <span class="font-semibold text-blue-700">48</span> equipamentos cadastrados
+      </p>
+    </div>
+    <button class="inline-flex items-center gap-1.5 bg-blue-900 text-white border-0 rounded-lg px-4 py-2.5 text-sm font-semibold cursor-pointer hover:bg-blue-700 transition whitespace-nowrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Novo Equipamento
+    </button>
+  </div>
+
+<div class="flex items-center gap-2.5 mb-4 flex-wrap">
+    <!-- Search -->
+    <div class="relative flex-1 min-w-48 max-w-md">
+      <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 flex pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </span>
+      <input
+        type="text"
+        placeholder="Buscar por nome ou part number…"
+        class="w-full h-9 pl-9 pr-3 border border-gray-300 rounded-lg text-sm text-gray-800 bg-white outline-none focus:border-blue-500 transition placeholder-gray-400"
+      />
+    </div>
+
+    <button class="inline-flex items-center gap-1.5 h-9 px-3.5 border border-gray-300 rounded-lg bg-white text-gray-600 text-sm font-medium cursor-pointer hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 transition whitespace-nowrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+      </svg>
+      Filtros
+      <span class="bg-blue-900 text-white rounded-full text-xs font-bold px-1.5 py-px leading-none">2</span>
+    </button>
+
+    <div class="flex-1 hidden sm:block"></div>
+    <app-card-sorter></app-card-sorter>
+</div>
+
+<app-current-filter-list></app-current-filter-list>
+<app-equipment-list></app-equipment-list>

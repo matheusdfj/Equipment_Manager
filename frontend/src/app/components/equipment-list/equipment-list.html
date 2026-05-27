@@ -1,0 +1,7 @@
+  <div class="flex flex-col gap-3">
+    @for (item of equipments; track $index) {
+
+        <app-equipment-list-item [equipment]="item"></app-equipment-list-item>
+
+    }
+  </div>
