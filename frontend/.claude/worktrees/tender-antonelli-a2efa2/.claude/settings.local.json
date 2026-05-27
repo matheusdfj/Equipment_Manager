@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Users\\\\mathe\\\\Documents\\\\Projects\\\\Python\\\\Equipment_Manager\")"
+    ]
+  }
+}

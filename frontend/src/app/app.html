@@ -1,0 +1,368 @@
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-50 bg-blue-900 shadow-lg h-15 flex items-center px-6 gap-4">
+  <a href="#" class="flex items-center gap-2.5 text-white font-bold text-lg no-underline shrink-0">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-90">
+      <circle cx="12" cy="5" r="2"/>
+      <line x1="12" y1="7" x2="12" y2="20"/>
+      <path d="M5 14H2a10 10 0 0 0 20 0h-3"/>
+    </svg>
+    <span class="leading-none">
+      Equipment Manager
+      <span class="block text-xs font-normal text-blue-300 tracking-widest uppercase mt-0.5">
+        Subsea &amp; Offshore
+      </span>
+    </span>
+  </a>
+
+  <div class="flex-1"></div>
+
+  <div class="flex items-center gap-2">
+    <button class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-white/80 hover:bg-white/20 hover:text-white transition border-0 cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+    </button>
+    <button class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-white/80 hover:bg-white/20 hover:text-white transition border-0 cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+    <div class="w-9 h-9 rounded-full bg-amber-500 text-blue-900 text-xs font-bold flex items-center justify-center cursor-pointer shrink-0">
+      MJ
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="max-w-5xl mx-auto px-6 py-7 pb-16">
+
+  <!-- Page header -->
+  <div class="flex items-start justify-between mb-6 gap-4 flex-wrap">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900 tracking-tight m-0 mb-1">Equipamentos</h1>
+      <p class="text-sm text-gray-500 m-0">
+        Exibindo <span class="font-semibold text-blue-700">8</span> de <span class="font-semibold text-blue-700">48</span> equipamentos cadastrados
+      </p>
+    </div>
+    <button class="inline-flex items-center gap-1.5 bg-blue-900 text-white border-0 rounded-lg px-4 py-2.5 text-sm font-semibold cursor-pointer hover:bg-blue-700 transition whitespace-nowrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Novo Equipamento
+    </button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="flex items-center gap-2.5 mb-4 flex-wrap">
+    <!-- Search -->
+    <div class="relative flex-1 min-w-48 max-w-md">
+      <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 flex pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </span>
+      <input
+        type="text"
+        placeholder="Buscar por nome ou part number…"
+        class="w-full h-9 pl-9 pr-3 border border-gray-300 rounded-lg text-sm text-gray-800 bg-white outline-none focus:border-blue-500 transition placeholder-gray-400"
+      />
+    </div>
+
+    <!-- Filter button -->
+    <button class="inline-flex items-center gap-1.5 h-9 px-3.5 border border-gray-300 rounded-lg bg-white text-gray-600 text-sm font-medium cursor-pointer hover:border-blue-500 hover:text-blue-700 hover:bg-blue-50 transition whitespace-nowrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+      </svg>
+      Filtros
+      <span class="bg-blue-900 text-white rounded-full text-xs font-bold px-1.5 py-px leading-none">2</span>
+    </button>
+
+    <div class="flex-1 hidden sm:block"></div>
+
+    <!-- Sort -->
+    <select class="h-9 px-3 border border-gray-300 rounded-lg bg-white text-gray-600 text-sm cursor-pointer outline-none focus:border-blue-500 transition hidden sm:block">
+      <option>Ordenar: Nome A→Z</option>
+      <option>Ordenar: Nome Z→A</option>
+      <option>Ordenar: Maior preço</option>
+      <option>Ordenar: Menor preço</option>
+      <option>Ordenar: Estoque</option>
+    </select>
+  </div>
+
+  <!-- Active filter chips -->
+  <div class="flex items-center gap-2 mb-5 flex-wrap">
+    <span class="text-xs text-gray-400">Filtros ativos:</span>
+    <button class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border-0 cursor-pointer hover:bg-blue-200 transition">
+      ROV
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <button class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border-0 cursor-pointer hover:bg-blue-200 transition">
+      Em estoque
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Equipment list -->
+  <div class="flex flex-col gap-3">
+
+    <!-- ROV Panther XT -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-blue-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/1e3a5f/ffffff?text=ROV" alt="ROV Panther XT" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">ROV Panther XT</h2>
+          <span class="shrink-0 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">ROV</span>
+          <span class="text-xs text-gray-400 font-mono">ROV-0001</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">ROV de trabalho profundo com capacidade para 3000m de profundidade, equipado com manipuladores hidráulicos e câmeras 4K.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 485.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+          2 unidades
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROV Tiger -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-blue-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/1e3a5f/ffffff?text=ROV" alt="ROV Tiger" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">ROV Tiger</h2>
+          <span class="shrink-0 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">ROV</span>
+          <span class="text-xs text-gray-400 font-mono">ROV-0002</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">ROV classe trabalho com 7 thrusters vetoriais e sistema de compensação de corrente.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 320.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+          1 unidade
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROV Cougar XT -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-blue-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/1e3a5f/ffffff?text=ROV" alt="ROV Cougar XT" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">ROV Cougar XT</h2>
+          <span class="shrink-0 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">ROV</span>
+          <span class="text-xs text-gray-400 font-mono">ROV-0003</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">ROV de intervenção para profundidades de até 3000m, com dois manipuladores e payload de 50kg.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 510.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-green-600 shrink-0"></span>
+          3 unidades
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROV Lynx -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-blue-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/1e3a5f/ffffff?text=ROV" alt="ROV Lynx" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">ROV Lynx</h2>
+          <span class="shrink-0 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">ROV</span>
+          <span class="text-xs text-gray-400 font-mono">ROV-0004</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">ROV compacto de inspeção com câmeras estéreo e sonar de varredura lateral.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 275.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-green-600 shrink-0"></span>
+          4 unidades
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROV Atom -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-blue-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/1e3a5f/ffffff?text=ROV" alt="ROV Atom" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">ROV Atom</h2>
+          <span class="shrink-0 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">ROV</span>
+          <span class="text-xs text-gray-400 font-mono">ROV-0005</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">Micro ROV para inspeção em espaços confinados e estruturas tubulares.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 198.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-green-600 shrink-0"></span>
+          6 unidades
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANM Subsea 5000 -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-green-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/2e7d32/ffffff?text=ANM" alt="ANM Subsea 5000" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">ANM Subsea 5000</h2>
+          <span class="shrink-0 bg-green-100 text-green-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">ANM</span>
+          <span class="text-xs text-gray-400 font-mono">ANM-0001</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">Árvore de Natal Molhada para lâminas d'água de até 3000m, pressão de trabalho 10000 psi.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 1.250.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+          1 unidade
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOP Stack 15K -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-orange-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/e65100/ffffff?text=BOP" alt="BOP Stack 15K" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">BOP Stack 15K</h2>
+          <span class="shrink-0 bg-orange-100 text-orange-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">BOP</span>
+          <span class="text-xs text-gray-400 font-mono">BOP-0001</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">Stack de BOP com pressão de trabalho de 15.000 psi para águas ultraprofundas.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 3.200.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+          1 unidade
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manifold Subsea 4 Vias -->
+    <div class="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-purple-300 transition cursor-pointer">
+      <div class="w-28 h-22 shrink-0 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img src="https://placehold.co/112x88/7b1fa2/ffffff?text=MAN" alt="Manifold Subsea 4 Vias" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 px-4 py-3 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <h2 class="text-base font-bold text-gray-900 m-0 truncate">Manifold Subsea 4 Vias</h2>
+          <span class="shrink-0 bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">Manifold</span>
+          <span class="text-xs text-gray-400 font-mono">MAN-0001</span>
+        </div>
+        <p class="text-sm text-gray-500 m-0 truncate">Manifold submarino de 4 vias para coleta de produção em campo satélite.</p>
+      </div>
+      <div class="flex flex-col items-end gap-2 px-5 py-3 shrink-0 border-l border-gray-100 min-w-36">
+        <span class="text-base font-bold text-gray-900">R$ 2.100.000</span>
+        <span class="flex items-center gap-1.5 text-xs text-gray-500">
+          <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+          1 unidade
+        </span>
+        <div class="flex gap-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 text-gray-400 bg-transparent cursor-pointer hover:border-blue-400 hover:text-blue-700 hover:bg-blue-50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /equipment-list -->
+
+</div>
+<!-- /page -->
+
+<router-outlet />

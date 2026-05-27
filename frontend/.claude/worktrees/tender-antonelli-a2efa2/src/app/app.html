@@ -1,0 +1,963 @@
+<style>
+  :host {
+    --primary: #0f4c81;
+    --primary-dark: #0a3460;
+    --primary-light: #1a6bbf;
+    --accent: #f0a500;
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --surface-hover: #f0f4fa;
+    --border: #dde3ec;
+    --text-primary: #1a2332;
+    --text-secondary: #5a6a7e;
+    --text-muted: #8fa0b3;
+    --success: #1e8c5a;
+    --danger: #c0392b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text-primary);
+  }
+
+  /* ── NAVBAR ─────────────────────────────────────────────── */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+
+  .navbar-brand svg {
+    opacity: 0.9;
+  }
+
+  .navbar-brand span {
+    line-height: 1;
+  }
+
+  .navbar-brand .brand-sub {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 1px;
+  }
+
+  .navbar-spacer {
+    flex: 1;
+  }
+
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.85);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .nav-btn:hover {
+    background: rgba(255,255,255,0.18);
+    color: white;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--primary-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── PAGE CONTENT ───────────────────────────────────────── */
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px 24px 48px;
+  }
+
+  /* ── PAGE HEADER ────────────────────────────────────────── */
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    letter-spacing: -0.02em;
+  }
+
+  .page-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .page-subtitle strong {
+    color: var(--primary);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-light);
+  }
+
+  /* ── TOOLBAR ────────────────────────────────────────────── */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .search-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 420px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    display: flex;
+  }
+
+  .search-input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px 0 38px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    background: var(--surface);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+  }
+
+  .search-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .search-input:focus {
+    border-color: var(--primary-light);
+  }
+
+  .toolbar-spacer {
+    flex: 1;
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 38px;
+    padding: 0 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+    background: var(--surface-hover);
+  }
+
+  .filter-btn .badge {
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    line-height: 1.4;
+  }
+
+  .sort-select {
+    height: 38px;
+    padding: 0 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .sort-select:focus {
+    border-color: var(--primary-light);
+  }
+
+  /* ── CHIPS / ACTIVE FILTERS ─────────────────────────────── */
+  .filter-chips {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+
+  .chip-active {
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    color: var(--primary);
+  }
+
+  .chip-active:hover {
+    background: color-mix(in srgb, var(--primary) 20%, transparent);
+  }
+
+  .chip svg {
+    opacity: 0.7;
+  }
+
+  .chip-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* ── EQUIPMENT LIST ─────────────────────────────────────── */
+  .equipment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .equipment-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .equipment-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+  }
+
+  .card-image {
+    width: 120px;
+    height: 90px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #e8ecf3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-image .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+  }
+
+  .card-image .img-placeholder span {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    flex: 1;
+    padding: 14px 18px;
+    min-width: 0;
+  }
+
+  .card-header-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+  }
+
+  .card-name {
+    font-size: 0.975rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .tag-rov    { background: #e0f0ff; color: #1565c0; }
+  .tag-anm    { background: #e8f5e9; color: #2e7d32; }
+  .tag-bop    { background: #fff3e0; color: #e65100; }
+  .tag-man    { background: #f3e5f5; color: #7b1fa2; }
+  .tag-umbilical { background: #e0f2f1; color: #00695c; }
+  .tag-riser  { background: #fce4ec; color: #c62828; }
+  .tag-comp   { background: #e8eaf6; color: #283593; }
+  .tag-sensor { background: #fff8e1; color: #f57f17; }
+  .tag-other  { background: #f5f5f5; color: #616161; }
+
+  .card-part {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: "Roboto Mono", "SFMono-Regular", monospace;
+  }
+
+  .card-description {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 560px;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 14px 20px;
+    flex-shrink: 0;
+    border-left: 1px solid var(--border);
+    min-width: 160px;
+  }
+
+  .card-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .card-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+
+  .qty-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .qty-ok   { background: var(--success); }
+  .qty-low  { background: var(--accent); }
+  .qty-none { background: var(--danger); }
+
+  .card-actions {
+    display: flex;
+    gap: 4px;
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .icon-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+    background: var(--surface-hover);
+  }
+
+  /* ── EMPTY STATE ────────────────────────────────────────── */
+  .empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    color: var(--text-muted);
+  }
+
+  .empty-state svg {
+    margin-bottom: 16px;
+    opacity: 0.35;
+  }
+
+  .empty-state p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 40px; }
+
+    .card-image { width: 80px; height: 70px; }
+    .card-meta { min-width: 120px; padding: 12px 14px; }
+    .card-description { display: none; }
+
+    .toolbar-spacer { display: none; }
+    .sort-select { display: none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- NAVBAR                                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <a class="navbar-brand" href="#">
+    <!-- anchor icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="5" r="2"/>
+      <line x1="12" y1="7" x2="12" y2="20"/>
+      <path d="M5 14H2a10 10 0 0 0 20 0h-3"/>
+    </svg>
+    <span>
+      Equipment Manager
+      <span class="brand-sub">Subsea &amp; Offshore</span>
+    </span>
+  </a>
+
+  <div class="navbar-spacer"></div>
+
+  <div class="navbar-actions">
+    <!-- notification bell -->
+    <button class="nav-btn" title="Notificações">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+    </button>
+    <!-- settings -->
+    <button class="nav-btn" title="Configurações">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33
+                 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33
+                 l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0
+                 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06
+                 A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51
+                 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9
+                 a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+    <div class="avatar" title="Meu perfil">MJ</div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PAGE CONTENT                                                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Equipamentos</h1>
+      <p class="page-subtitle">
+        Exibindo <strong>12</strong> de <strong>48</strong> equipamentos cadastrados
+      </p>
+    </div>
+    <button class="btn-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Novo Equipamento
+    </button>
+  </div>
+
+  <!-- Toolbar: search + filters -->
+  <div class="toolbar">
+    <div class="search-wrapper">
+      <span class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </span>
+      <input class="search-input" type="text" placeholder="Buscar por nome ou part number…" />
+    </div>
+
+    <!-- filter button -->
+    <button class="filter-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+      </svg>
+      Filtros
+      <span class="badge">2</span>
+    </button>
+
+    <div class="toolbar-spacer"></div>
+
+    <select class="sort-select">
+      <option>Ordenar: Nome A→Z</option>
+      <option>Ordenar: Nome Z→A</option>
+      <option>Ordenar: Maior preço</option>
+      <option>Ordenar: Menor preço</option>
+      <option>Ordenar: Estoque</option>
+    </select>
+  </div>
+
+  <!-- Active filter chips -->
+  <div class="filter-chips">
+    <span class="chip-label">Filtros ativos:</span>
+
+    <button class="chip chip-active">
+      ROV
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <button class="chip chip-active">
+      Em estoque
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Equipment list -->
+  <div class="equipment-list">
+
+    <!-- Card 1 -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/0f4c81/ffffff?text=ROV" alt="ROV Panther XT" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">ROV Panther XT</h2>
+          <span class="tag tag-rov">ROV</span>
+          <span class="card-part">ROV-0001</span>
+        </div>
+        <p class="card-description">ROV de trabalho profundo com capacidade para 3000m de profundidade, equipado com manipuladores hidráulicos e câmeras 4K.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 485.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-low"></span>
+          2 unidades
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/0f4c81/ffffff?text=ROV" alt="ROV Tiger" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">ROV Tiger</h2>
+          <span class="tag tag-rov">ROV</span>
+          <span class="card-part">ROV-0002</span>
+        </div>
+        <p class="card-description">ROV classe trabalho com 7 thrusters vetoriais e sistema de compensação de corrente.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 320.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-low"></span>
+          1 unidade
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/0f4c81/ffffff?text=ROV" alt="ROV Cougar XT" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">ROV Cougar XT</h2>
+          <span class="tag tag-rov">ROV</span>
+          <span class="card-part">ROV-0003</span>
+        </div>
+        <p class="card-description">ROV de intervenção para profundidades de até 3000m, com dois manipuladores e payload de 50kg.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 510.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-ok"></span>
+          3 unidades
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/0f4c81/ffffff?text=ROV" alt="ROV Lynx" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">ROV Lynx</h2>
+          <span class="tag tag-rov">ROV</span>
+          <span class="card-part">ROV-0004</span>
+        </div>
+        <p class="card-description">ROV compacto de inspeção com câmeras estéreo e sonar de varredura lateral.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 275.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-ok"></span>
+          4 unidades
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/0f4c81/ffffff?text=ROV" alt="ROV Atom" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">ROV Atom</h2>
+          <span class="tag tag-rov">ROV</span>
+          <span class="card-part">ROV-0005</span>
+        </div>
+        <p class="card-description">Micro ROV para inspeção em espaços confinados e estruturas tubulares.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 198.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-ok"></span>
+          6 unidades
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 – ANM -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/2e7d32/ffffff?text=ANM" alt="ANM Subsea 5000" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">ANM Subsea 5000</h2>
+          <span class="tag tag-anm">ANM</span>
+          <span class="card-part">ANM-0001</span>
+        </div>
+        <p class="card-description">Árvore de Natal Molhada para lâminas d'água de até 3000m, pressão de trabalho 10000 psi.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 1.250.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-low"></span>
+          1 unidade
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 7 – BOP -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/e65100/ffffff?text=BOP" alt="BOP Stack 15K" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">BOP Stack 15K</h2>
+          <span class="tag tag-bop">BOP</span>
+          <span class="card-part">BOP-0001</span>
+        </div>
+        <p class="card-description">Stack de BOP com pressão de trabalho de 15.000 psi para águas ultraprofundas.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 3.200.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-low"></span>
+          1 unidade
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 8 – Manifold -->
+    <div class="equipment-card">
+      <div class="card-image">
+        <img src="https://placehold.co/120x90/7b1fa2/ffffff?text=MAN" alt="Manifold Subsea 4 Vias" />
+      </div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <h2 class="card-name">Manifold Subsea 4 Vias</h2>
+          <span class="tag tag-man">Manifold</span>
+          <span class="card-part">MAN-0001</span>
+        </div>
+        <p class="card-description">Manifold submarino de 4 vias para coleta de produção em campo satélite.</p>
+      </div>
+      <div class="card-meta">
+        <span class="card-price">R$ 2.100.000</span>
+        <span class="card-qty">
+          <span class="qty-dot qty-low"></span>
+          1 unidade
+        </span>
+        <div class="card-actions">
+          <button class="icon-btn" title="Ver detalhes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Editar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /equipment-list -->
+
+</div>
+<!-- /page -->
+
+<router-outlet />
