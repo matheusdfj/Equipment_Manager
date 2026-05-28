@@ -15,4 +15,3 @@ class Observation(models.Model):
     createdon = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=200)
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name="observations")
-

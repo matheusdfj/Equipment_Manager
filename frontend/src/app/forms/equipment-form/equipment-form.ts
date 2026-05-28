@@ -1,17 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../../services/api';
-import { Equipment } from '../../components/equipment-list/equipment-list';
+import { EquipmentApiService } from '../../services/equipment-api';
+import { Equipment } from '../../types';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-equipment-form',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './equipment-form.html',
   styleUrl: './equipment-form.css',
 })
+
 export class EquipmentForm {
   fb = inject(FormBuilder);
-  api = inject(ApiService);
+  api = inject(EquipmentApiService);
 
   form = this.fb.nonNullable.group({
     name: ['',Validators.required],
@@ -24,31 +26,20 @@ export class EquipmentForm {
 
   updateData(){
 
-    if(this.form.valid){
+      this.api.updateEquipment("id", this.form.getRawValue()).subscribe();
 
-      this.api.updateEquipment("id", this.form.getRawValue());
-
-    }
-    
   }
 
   createData(){
 
-    if(this.form.valid){
-
-      this.api.createEquipment(this.form.getRawValue());
-
-    }
+      this.api.createEquipment(this.form.getRawValue()).subscribe();
 
   }
 
   deleteData(){
 
-    this.api.deleteEquipment("id");
+    this.api.deleteEquipment("id").subscribe();
 
   }
-
-
-
 
 }

@@ -5,7 +5,7 @@
     <div class="flex-1 px-4 py-3 min-w-0">
         <div class="flex items-center gap-2 mb-1 flex-wrap">
             <h2 class="text-base font-bold text-gray-900 m-0 truncate">{{equipment().name}}</h2>
-            <span class="shrink-0 bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">{{equipment().tipo}}</span>
+            <span class="shrink-0 bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded">{{equipment().type}}</span>
             <span class="text-xs text-gray-400 font-mono">{{equipment().id}}</span>
         </div>
         <p class="text-sm text-gray-500 m-0 truncate">{{equipment().description}}</p>
@@ -14,7 +14,7 @@
         <span class="text-base font-bold text-gray-900">R$ {{equipment().price}}</span>
         <span class="flex items-center gap-1.5 text-xs text-gray-500">
             <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
-            {{equipment().qtd}} units
+            {{equipment().quantity}} units
         </span>
     </div>
 </div>

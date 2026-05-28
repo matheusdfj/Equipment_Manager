@@ -5,6 +5,7 @@ import { CurrentFilterList } from '../../components/current-filter-list/current-
 import { EquipmentList } from '../../components/equipment-list/equipment-list';
 import { EquipmentListItem } from '../../components/equipment-list-item/equipment-list-item';
 import { FormFrame } from '../../components/form-frame/form-frame';
+import { EquipmentForm } from '../../forms/equipment-form/equipment-form';
 
 import { ModalService } from '../../services/modal';
 
@@ -19,13 +20,13 @@ export class EquipmentListPage {
 
   newEquipment(){
 
-    this.modal.openModal(FormFrame);
+    this.modal.openModal(FormFrame, EquipmentForm);
 
   }
 
   openFilter(){
 
-    this.modal.openModal(FormFrame);
+    this.modal.openModal(FormFrame, FormFrame);
     
   }
 
