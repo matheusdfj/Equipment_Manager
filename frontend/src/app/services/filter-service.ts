@@ -1,6 +1,7 @@
 import { inject, Injectable, computed, signal } from '@angular/core';
 import { EquipmentApiService } from './equipment-api';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Equipment, Obs } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +9,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class FilterService {
   api = inject(EquipmentApiService);
   searchString = signal<string>('');
-  data = toSignal(this.api.getAllEquipments());
+  rawData = toSignal(this.api.getAllEquipments());
+  obs = signal<Obs[]>([]);
+  selectedEquipment = signal<Equipment>;
 
-  filter_data = computed(() => {
+  data = computed(() => {
 
-    return this.data()?.filter(f =>
+    return this.rawData()?.filter(f =>
       f.name.toLowerCase().includes(this.searchString().toLowerCase()) ||
       f.description.toLowerCase().includes(this.searchString().toLowerCase())
     )

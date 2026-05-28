@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterForm } from './filter-form';
+import { EquipmentViewPage } from './equipment-view-page';
 
-describe('FilterForm', () => {
-  let component: FilterForm;
-  let fixture: ComponentFixture<FilterForm>;
+describe('EquipmentViewPage', () => {
+  let component: EquipmentViewPage;
+  let fixture: ComponentFixture<EquipmentViewPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilterForm]
+      imports: [EquipmentViewPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FilterForm);
+    fixture = TestBed.createComponent(EquipmentViewPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

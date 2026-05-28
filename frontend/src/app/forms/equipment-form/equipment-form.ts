@@ -24,22 +24,10 @@ export class EquipmentForm {
     id: ['', Validators.required]
   });
 
-  updateData(){
+  updateData = () => this.api.updateEquipment("id", this.form.getRawValue()).subscribe();
 
-      this.api.updateEquipment("id", this.form.getRawValue()).subscribe();
+  createData = () => this.api.createEquipment(this.form.getRawValue()).subscribe();
 
-  }
-
-  createData(){
-
-      this.api.createEquipment(this.form.getRawValue()).subscribe();
-
-  }
-
-  deleteData(){
-
-    this.api.deleteEquipment("id").subscribe();
-
-  }
+  deleteData = () => this.api.deleteEquipment("id").subscribe();
 
 }

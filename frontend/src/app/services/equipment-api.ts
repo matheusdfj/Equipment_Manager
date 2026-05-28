@@ -8,22 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class EquipmentApiService {
 
-  private baseUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'http://127.0.0.1:8000/api/equipment';
 
   constructor(private http: HttpClient){};
 
-  // Equipment section
+  createEquipment = (eq: Equipment): Observable<Equipment> => this.http.post<Equipment>(`${this.apiUrl}`, eq);
 
-  createEquipment = (eq: Equipment): Observable<Equipment> => this.http.post<Equipment>(`${this.baseUrl}/equipment`, eq);
+  updateEquipment = (id: string, eq: Equipment) : Observable<Equipment> => this.http.put<Equipment>(`${this.apiUrl}/${eq}`, eq);
 
-  updateEquipment = (id: string, eq: Equipment) : Observable<Equipment> => this.http.put<Equipment>(`${this.baseUrl}/equipment/${eq}`, eq);
+  deleteEquipment = (id: string) : Observable<Equipment> => this.http.delete<Equipment>(`${this.apiUrl}/${id}`);
 
-  deleteEquipment = (id: string) : Observable<Equipment> => this.http.delete<Equipment>(`${this.baseUrl}/equipment/${id}`);
+  getEquipment = (id:string) : Observable<Equipment> => this.http.get<Equipment>(`${this.apiUrl}/${id}`);
 
-  getEquipment = (id:string) : Observable<Equipment> => this.http.get<Equipment>(`${this.baseUrl}/equipment/${id}`);
-
-  getAllEquipments = () : Observable<Equipment[]> => this.http.get<Equipment[]>(`${this.baseUrl}/equipment`);
-  
-  // Observation section
+  getAllEquipments = () : Observable<Equipment[]> => this.http.get<Equipment[]>(`${this.apiUrl}`);
 
 }
